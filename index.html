@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Reddit Top Gossips – Instantly browse the top 10 trending posts from any subreddit in a stunning, real-time feed." />
+  <title>Reddit Top Gossips</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ===== NAVBAR ===== -->
+  <header class="navbar" id="navbar">
+    <div class="navbar-left">
+      <div class="logo">
+        <svg class="logo-icon" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="10" cy="10" r="10" fill="#FF4500"/>
+          <ellipse cx="10" cy="10.5" rx="5.5" ry="4" fill="white"/>
+          <circle cx="8" cy="10" r="1.1" fill="#FF4500"/>
+          <circle cx="12" cy="10" r="1.1" fill="#FF4500"/>
+          <path d="M8 12.5 Q10 13.8 12 12.5" stroke="#FF4500" stroke-width="0.8" stroke-linecap="round" fill="none"/>
+          <circle cx="14.8" cy="5.5" r="1.5" fill="white"/>
+          <line x1="14.8" y1="7" x2="10" y2="9" stroke="white" stroke-width="1.2"/>
+        </svg>
+        <span class="logo-text">Reddit <span class="accent">Top Gossips</span></span>
+      </div>
+    </div>
+    <nav class="navbar-center">
+      <a href="#" class="nav-link active" id="nav-hot">🔥 Hot</a>
+      <a href="#" class="nav-link" id="nav-top">⬆ Top</a>
+      <a href="#" class="nav-link" id="nav-new">✨ New</a>
+      <a href="#" class="nav-link" id="nav-rising">📈 Rising</a>
+    </nav>
+    <div class="navbar-right">
+      <button class="btn-refresh" id="btn-refresh" title="Refresh posts">
+        <svg class="refresh-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M1 4v6h6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M3.51 15a9 9 0 1 0 .49-4" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        Refresh
+      </button>
+    </div>
+  </header>
+
+  <!-- ===== HERO BAND ===== -->
+  <div class="hero-band">
+    <div class="hero-content">
+      <h1 class="hero-title">What's trending on Reddit?</h1>
+      <p class="hero-sub">Top 10 posts from any subreddit, live.</p>
+    </div>
+    <!-- Subreddit search bar -->
+    <div class="search-bar" id="search-bar">
+      <span class="search-prefix">r/</span>
+      <input
+        type="text"
+        id="subreddit-input"
+        class="search-input"
+        placeholder="Enter subreddit (e.g. worldnews)"
+        autocomplete="off"
+        spellcheck="false"
+        aria-label="Subreddit name"
+      />
+      <button class="btn-go" id="btn-go">Go</button>
+    </div>
+    <!-- Quick picks -->
+    <div class="quick-picks" id="quick-picks">
+      <span class="qp-label">Quick picks:</span>
+      <button class="qp-btn active" data-sub="popular">popular</button>
+      <button class="qp-btn" data-sub="worldnews">worldnews</button>
+      <button class="qp-btn" data-sub="technology">technology</button>
+      <button class="qp-btn" data-sub="gaming">gaming</button>
+      <button class="qp-btn" data-sub="science">science</button>
+      <button class="qp-btn" data-sub="movies">movies</button>
+      <button class="qp-btn" data-sub="sports">sports</button>
+    </div>
+  </div>
+
+  <!-- ===== MAIN LAYOUT ===== -->
+  <div class="layout">
+
+    <!-- LEFT SIDEBAR -->
+    <aside class="sidebar-left" id="sidebar-left">
+      <div class="sidebar-card">
+        <h3 class="sidebar-heading">🔥 Trending Communities</h3>
+        <ul class="trending-list" id="trending-list">
+          <li class="trending-item active" data-sub="popular">
+            <span class="t-rank">1</span>
+            <span class="t-name">r/popular</span>
+            <span class="t-badge badge-hot">HOT</span>
+          </li>
+          <li class="trending-item" data-sub="worldnews">
+            <span class="t-rank">2</span>
+            <span class="t-name">r/worldnews</span>
+          </li>
+          <li class="trending-item" data-sub="technology">
+            <span class="t-rank">3</span>
+            <span class="t-name">r/technology</span>
+          </li>
+          <li class="trending-item" data-sub="gaming">
+            <span class="t-rank">4</span>
+            <span class="t-name">r/gaming</span>
+          </li>
+          <li class="trending-item" data-sub="science">
+            <span class="t-rank">5</span>
+            <span class="t-name">r/science</span>
+          </li>
+          <li class="trending-item" data-sub="movies">
+            <span class="t-rank">6</span>
+            <span class="t-name">r/movies</span>
+          </li>
+          <li class="trending-item" data-sub="sports">
+            <span class="t-rank">7</span>
+            <span class="t-name">r/sports</span>
+          </li>
+          <li class="trending-item" data-sub="askreddit">
+            <span class="t-rank">8</span>
+            <span class="t-name">r/AskReddit</span>
+          </li>
+          <li class="trending-item" data-sub="todayilearned">
+            <span class="t-rank">9</span>
+            <span class="t-name">r/todayilearned</span>
+          </li>
+          <li class="trending-item" data-sub="funny">
+            <span class="t-rank">10</span>
+            <span class="t-name">r/funny</span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="sidebar-card sidebar-about">
+        <h3 class="sidebar-heading">About</h3>
+        <p class="about-text">Reddit Top Gossips surfaces the <strong>top 10 posts</strong> from any subreddit in real-time using Reddit's public JSON API.</p>
+        <div class="about-stat-row">
+          <div class="about-stat">
+            <span class="stat-num" id="stat-posts">0</span>
+            <span class="stat-label">Posts loaded</span>
+          </div>
+          <div class="about-stat">
+            <span class="stat-num" id="stat-upvotes">0</span>
+            <span class="stat-label">Total upvotes</span>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- MAIN FEED -->
+    <main class="feed" id="feed">
+      <!-- Sort bar -->
+      <div class="sort-bar">
+        <span class="sort-label" id="sort-label">Viewing <strong id="current-sub">r/popular</strong></span>
+        <div class="sort-options">
+          <span class="sort-opt active" data-sort="hot">Hot</span>
+          <span class="sort-opt" data-sort="top">Top</span>
+          <span class="sort-opt" data-sort="new">New</span>
+          <span class="sort-opt" data-sort="rising">Rising</span>
+        </div>
+      </div>
+
+      <!-- Loading state -->
+      <div class="loading-state" id="loading-state" style="display:none">
+        <div class="spinner"></div>
+        <p class="loading-text">Fetching posts from Reddit…</p>
+      </div>
+
+      <!-- Error state -->
+      <div class="error-state" id="error-state" style="display:none">
+        <div class="error-icon">⚠️</div>
+        <h3 class="error-title">Subreddit not found</h3>
+        <p class="error-msg" id="error-msg">Please check the subreddit name and try again.</p>
+        <button class="btn-retry" id="btn-retry">Retry</button>
+      </div>
+
+      <!-- Post cards container -->
+      <div class="cards-grid" id="cards-grid"></div>
+    </main>
+
+    <!-- RIGHT SIDEBAR -->
+    <aside class="sidebar-right" id="sidebar-right">
+      <div class="sidebar-card community-card" id="community-info">
+        <div class="community-banner" id="community-banner"></div>
+        <div class="community-body">
+          <h3 class="community-name" id="community-name">r/popular</h3>
+          <p class="community-desc" id="community-desc">The most popular posts across Reddit right now.</p>
+          <div class="community-stats" id="community-stats">
+            <div class="cs-item">
+              <span class="cs-val" id="cs-members">—</span>
+              <span class="cs-key">members</span>
+            </div>
+            <div class="cs-item">
+              <span class="cs-val" id="cs-online">—</span>
+              <span class="cs-key">online now</span>
+            </div>
+          </div>
+          <a class="btn-visit" id="btn-visit" href="https://www.reddit.com/r/popular" target="_blank" rel="noopener">Visit on Reddit ↗</a>
+        </div>
+      </div>
+
+      <div class="sidebar-card">
+        <h3 class="sidebar-heading">📊 Feed Stats</h3>
+        <ul class="stats-list" id="stats-list">
+          <li class="stats-row">
+            <span class="stats-key">Top post score</span>
+            <span class="stats-val" id="stat-top-score">—</span>
+          </li>
+          <li class="stats-row">
+            <span class="stats-key">Avg upvotes</span>
+            <span class="stats-val" id="stat-avg">—</span>
+          </li>
+          <li class="stats-row">
+            <span class="stats-key">Avg comments</span>
+            <span class="stats-val" id="stat-avg-comments">—</span>
+          </li>
+          <li class="stats-row">
+            <span class="stats-key">Last refreshed</span>
+            <span class="stats-val" id="stat-refresh-time">—</span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="sidebar-card">
+        <h3 class="sidebar-heading">🎯 App Info</h3>
+        <p class="sidebar-text">Powered by Reddit's public JSON API. No login required. Data is read-only.</p>
+        <p class="sidebar-text" style="margin-top:8px; color: var(--text-muted); font-size:0.78rem;">Built by <strong style="color:var(--accent)">Antigravity</strong> · v1.0</p>
+      </div>
+    </aside>
+
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
