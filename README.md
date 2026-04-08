@@ -212,6 +212,6 @@ MIT © 2026 [SandeshMagar22](https://github.com/sandeshMagar22)
 
 <div align="center">
 
-Built with ❤️ by **Antigravity** · Powered by the [Reddit Public JSON API](https://www.reddit.com/dev/api/)
+Powered by the [Reddit Public JSON API](https://www.reddit.com/dev/api/)
 
 </div>
